@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>City Info</title>
+</head>
+<body>
+   <h1 style="text-align:center; font-size:2.5em; color:blue;">City Info</h1>
+   
+   <div >
+	   <h3 style="text-align:center; font-size:2em" th:inline="text">
+	      [[${cityInfoModel.getCity().getName()}]]</h3>
+	   
+	   <table style="border:1px solid black; margin-left:auto; margin-right:auto; 
+	          padding:2px; border-spacing:30px; font-size:1em">
+	    <tr>
+	      <td>ID:</td>
+	      <td th:if="${cityInfoModel.getCity().getID() != null}" th:numbers>
+	        [[${cityInfoModel.getCity().getID()}]]</td>
+	    </tr>
+	    <tr>
+	      <td>Country Code:</td>
+	      <td th:if="${cityInfoModel.getCountry().getCode() != null}" th:inline="text">
+	        [[${cityInfoModel.getCountry().getCode()}]]</td>
+	    </tr>
+	    <tr>
+	      <td>Country Name:</td>
+	      <td th:if="${cityInfoModel.getCountry().getName() != null}" th:inline="text">
+	        [[${cityInfoModel.getCountry().getName()}]]</td>
+	    </tr>
+	    <tr>
+	      <td>District:</td>
+	      <td th:if="${cityInfoModel.getCity().getDistrict() != null}" th:inline="text">
+	        [[${cityInfoModel.getCity().getDistrict()}]]</td>
+	    </tr>
+	    <tr>
+	      <td>Population:</td>
+	      <td th:if="${cityInfoModel.getCity().getPopulation()}" th:inline="text">
+	        [[${cityInfoModel.getCity().getPopulation()}]]</td>
+	    </tr>
+	    <tr>
+	      <td>Local Weather:</td>
+	      <td th:if="${cityInfoModel.getTimeAndTemp().getTempInFahrenheit() != null
+	            && cityInfoModel.getTimeAndTemp().getFahrenheitSymbol() != null}" 
+	            th:inline="text">[[${cityInfoModel.getTimeAndTemp().getTempInFahrenheit()}]] 
+	        [[${cityInfoModel.getTimeAndTemp().getFahrenheitSymbol()}]]<td>
+	    </tr>
+	    <tr>
+	      <td>Local Time:</td>
+	      <td th:if="${cityInfoModel.getTimeAndTemp().getTime() != null}" 
+	          th:inline="text">[[${cityInfoModel.getTimeAndTemp().getTime()}]]</td>
+	    </tr>
+	  </table>
+  </div>
+</body>
+</html>
